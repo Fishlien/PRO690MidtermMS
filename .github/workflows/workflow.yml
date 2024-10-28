@@ -68,8 +68,10 @@ jobs:
 
       - name: Update Database
         run: |
-          dotnet tool install --global dotnet-ef --version 5.0.11
+          dotnet tool install --global dotnet-ef --version 6.*
+          dotnet add package Microsoft.EntityFrameworkCore.Design
           dotnet ef database update
+          
         env:
           ConnectionStrings__MyDbConnection: ${{ env.SQL_DB_CONN_STR }}
       
