@@ -31,11 +31,10 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@master
       
-      # Setup .NET Core SDK
-      - name: Setup .NET Core
+      - name: Set up .NET SDK
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ env.DOTNET_VERSION }} 
+          dotnet-version: '6.0.x'  # Specify the .NET version you want to use
       
       # Run dotnet build and publish
       - name: dotnet build and publish
