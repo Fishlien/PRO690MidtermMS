@@ -12,8 +12,8 @@ env:
     AZURE_RESOURCEGROUP_NAME: PRO3690MidtermMS                      # set this to your preferred resource group name
     AZURE_WEBAPP_NAME: Pro690MidtermMSWebapp                         # set this to your preferred web app name
     ASP_NAME: demo-webappsql-gh-actions
-    SQLSERVER_NAME: Pro690MidtermMSSQLServer                    # set this to your preferred sql server name
-    DATABASE_NAME: Pro690MidtermMSSQLDB                   # set this to your preferred sql database name
+    SQLSERVER_NAME: pro690midtermms-sqlserver                    # set this to your preferred sql server name
+    DATABASE_NAME: pro690midtermms-sqldb                   # set this to your preferred sql database name
     SQLADMIN_LOGIN: ${{ secrets.SQLADMIN_LOGIN  }}                # Create a secret in your Github repo for the SQL Admin login name you want to use
     SQLADMIN_PASS: ${{ secrets.SQLADMIN_PASS  }}                 # Create a secret in your Github repo for the SQL Admin password you want to use
 
