@@ -1,7 +1,7 @@
 name: Build and deploy app
 
 on:
-  workflow_dispatch:
+  push
 
 permissions:
   id-token: write # Grant write permission to the ID token
