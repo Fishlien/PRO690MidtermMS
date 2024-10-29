@@ -69,7 +69,6 @@ jobs:
       - name: Update Database
         run: |
           dotnet tool install --global dotnet-ef --version 5.*
-          dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.24
           dotnet ef database update
           
         env:
