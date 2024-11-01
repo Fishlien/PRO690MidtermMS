@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,9 +21,19 @@ namespace DotNetCoreSqlDb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // Retrieve the connection string template from appsettings.json
+            var connectionString = Configuration.GetConnectionString("MyDbConnection");
+
+            // Replace placeholders with environment variables
+            connectionString = connectionString
+                .Replace("{SQLADMIN_LOGIN}", Environment.GetEnvironmentVariable("SQLADMIN_LOGIN") ?? "")
+                .Replace("{SQLADMIN_PASS}", Environment.GetEnvironmentVariable("SQLADMIN_PASS") ?? "");
+
+            // Register DbContext with the modified connection string
             services.AddDbContext<MyDatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("MyDbConnection")));
+                options.UseSqlServer(connectionString));
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
